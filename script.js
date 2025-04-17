@@ -1,5 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Código do quiz (já existente)
+document.addEventListener('DOMContentLoaded', function () {
     const startButton = document.getElementById('start-btn');
     const nextButton = document.getElementById('next-btn');
     const restartButton = document.getElementById('restart-btn');
@@ -9,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultContainer = document.getElementById('result-container');
     const scoreText = document.getElementById('score-text');
     const prizeText = document.getElementById('prize-text');
+    const postCredits = document.getElementById('post-credits');
 
     let currentQuestionIndex = 0;
     let score = 0;
@@ -43,25 +43,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     startButton.addEventListener('click', startQuiz);
     nextButton.addEventListener('click', showNextQuestion);
-    restartButton.addEventListener('click', restartQuiz);
+    restartButton.addEventListener('click', startQuiz);
 
     function startQuiz() {
         startButton.classList.add('hide');
         questionContainer.classList.remove('hide');
         currentQuestionIndex = 0;
         score = 0;
-        nextButton.classList.remove('hide');
         resultContainer.classList.add('hide');
-        document.getElementById('post-credits').classList.add('hide');
-    
+        nextButton.classList.remove('hide');
+        postCredits.classList.add('hide');
+
         showQuestion(questions[currentQuestionIndex]);
     }
-
 
     function showQuestion(question) {
         questionText.textContent = question.question;
         optionsContainer.innerHTML = '';
-        
+        nextButton.disabled = true;
+
         question.options.forEach((option, index) => {
             const button = document.createElement('button');
             button.textContent = option;
@@ -74,13 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function selectAnswer(index) {
         const correctIndex = questions[currentQuestionIndex].correctAnswer;
         const optionButtons = optionsContainer.querySelectorAll('.option-btn');
-        
-        // Desabilita todos os botões após selecionar uma resposta
-        optionButtons.forEach(button => {
-            button.disabled = true;
-        });
-        
-        // Indica a resposta correta e a incorreta
+
+        optionButtons.forEach(btn => btn.disabled = true);
+
         if (index === correctIndex) {
             optionButtons[index].classList.add('correct');
             score++;
@@ -88,64 +84,26 @@ document.addEventListener('DOMContentLoaded', function() {
             optionButtons[index].classList.add('wrong');
             optionButtons[correctIndex].classList.add('correct');
         }
-        
+
         nextButton.disabled = false;
     }
 
-    function showQuestion(question) {
-        questionText.textContent = question.question;
-        optionsContainer.innerHTML = '';
-        nextButton.disabled = true;
-    
-        question.options.forEach((option, index) => {
-            const button = document.createElement('button');
-            button.textContent = option;
-            button.classList.add('option-btn');
-            button.addEventListener('click', () => selectAnswer(index));
-            optionsContainer.appendChild(button);
-        });
-    }
-
-    function showResult() {
-        questionContainer.classList.add('hide'); // 👈 Isso já está certo!
-        nextButton.classList.add('hide');
-        resultContainer.classList.remove('hide');
-        document.getElementById('post-credits').classList.remove('hide');
-    
-        scoreText.textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
-    
-        if (score === questions.length) {
-            prizeText.textContent = "Parabéns! Você ganhou 2 Coca-Colas e mini granolas da Jasmine! Retire seu prêmio com o coordenador.";
-        } else if (score >= 3) {
-            prizeText.textContent = "Muito bom! Você ganhou 1 Coca-Cola e uma mini granola da Jasmine! Retire seu prêmio com o coordenador.";
-        } else if (score >= 1) {
-            prizeText.textContent = "Continue tentando! Você ganhou uma mini granola da Jasmine! Retire seu prêmio com o coordenador.";
+    function showNextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            showQuestion(questions[currentQuestionIndex]);
         } else {
-            youLost();
+            showResult();
         }
     }
 
+    function showResult() {
+        questionContainer.classList.add('hide');
+        nextButton.classList.add('hide');
+        resultContainer.classList.remove('hide');
+        postCredits.classList.remove('hide');
 
-    function youLost() {
-    prizeText.textContent = "Eita! Você não ganhou nem a coquinha geladinha 🥤 e nem a granola 🥣... Tenta de novo, vai que dá!";
-    }
+        scoreText.textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
 
-    function restartQuiz() {
-        startQuiz();
-    }
-
-    // Implementação da função para revelar elementos ao descer a página
-    const revealElements = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Opcional: se o efeito for único, desative o observer para o elemento
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    revealElements.forEach(el => observer.observe(el));
-});
+        if (score === questions.length) {
+            prizeText.textContent = "Parabéns! Você
