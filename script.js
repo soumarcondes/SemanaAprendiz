@@ -92,20 +92,25 @@ document.addEventListener('DOMContentLoaded', function() {
         nextButton.disabled = false;
     }
 
-    function showNextQuestion() {
-        currentQuestionIndex++;
-        
-        if (currentQuestionIndex < questions.length) {
-            showQuestion(questions[currentQuestionIndex]);
-        } else {
-            showResult();
-        }
+    function showQuestion(question) {
+        questionText.textContent = question.question;
+        optionsContainer.innerHTML = '';
+        nextButton.disabled = true;
+    
+        question.options.forEach((option, index) => {
+            const button = document.createElement('button');
+            button.textContent = option;
+            button.classList.add('option-btn');
+            button.addEventListener('click', () => selectAnswer(index));
+            optionsContainer.appendChild(button);
+        });
     }
 
     function showResult() {
-        questionContainer.classList.add('hide');
+        questionContainer.classList.add('hide'); // 👈 Isso já está certo!
         nextButton.classList.add('hide');
         resultContainer.classList.remove('hide');
+        document.getElementById('post-credits').classList.remove('hide');
     
         scoreText.textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
     
@@ -116,9 +121,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (score >= 1) {
             prizeText.textContent = "Continue tentando! Você ganhou uma mini granola da Jasmine! Retire seu prêmio com o coordenador.";
         } else {
-            youLost(); // 👉 Aqui entra nossa função nova se o score for zero
+            youLost();
         }
     }
+
 
     function youLost() {
     prizeText.textContent = "Eita! Você não ganhou nem a coquinha geladinha 🥤 e nem a granola 🥣... Tenta de novo, vai que dá!";
