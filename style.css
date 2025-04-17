@@ -208,5 +208,30 @@ main {
 #result-container {
     background-color: var(--light-gray);
     border-radius: 8px;
-    padding: 1
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.hide {
+    display: none;
+}
+
+.reveal {
+    opacity: 0;
+    animation: reveal 1s forwards;
+}
+
+@keyframes reveal {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-gray);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
 }
