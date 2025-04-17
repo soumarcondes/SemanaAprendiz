@@ -52,8 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
         score = 0;
         nextButton.classList.remove('hide');
         resultContainer.classList.add('hide');
+        document.getElementById('post-credits').classList.add('hide');
+    
         showQuestion(questions[currentQuestionIndex]);
     }
+
 
     function showQuestion(question) {
         questionText.textContent = question.question;
