@@ -103,16 +103,22 @@ document.addEventListener('DOMContentLoaded', function() {
         questionContainer.classList.add('hide');
         nextButton.classList.add('hide');
         resultContainer.classList.remove('hide');
-        
+    
         scoreText.textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
-        
+    
         if (score === questions.length) {
             prizeText.textContent = "Parabéns! Você ganhou 2 Coca-Colas e mini granolas da Jasmine! Retire seu prêmio com o coordenador.";
         } else if (score >= 3) {
             prizeText.textContent = "Muito bom! Você ganhou 1 Coca-Cola e uma mini granola da Jasmine! Retire seu prêmio com o coordenador.";
-        } else {
+        } else if (score >= 1) {
             prizeText.textContent = "Continue tentando! Você ganhou uma mini granola da Jasmine! Retire seu prêmio com o coordenador.";
+        } else {
+            youLost(); // 👉 Aqui entra nossa função nova se o score for zero
         }
+    }
+
+    function youLost() {
+    prizeText.textContent = "Eita! Você não ganhou nem a coquinha geladinha 🥤 e nem a granola 🥣... Tenta de novo, vai que dá!";
     }
 
     function restartQuiz() {
