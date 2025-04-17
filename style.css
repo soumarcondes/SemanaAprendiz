@@ -8,154 +8,347 @@
     --shadow-medium: rgba(0, 0, 0, 0.15);
 }
 
-/* Resetando o estilo padrão */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
     background-color: var(--light-gray);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--dark-gray);
+    line-height: 1.6;
 }
 
-/* Estilo do Header */
+/* Header */
 header {
     background: linear-gradient(135deg, var(--coca-red), var(--jasmine-green));
-    color: white;
+    color: #fff;
     text-align: center;
-    padding: 5rem 0;
+    padding: 2rem 1rem;
+    box-shadow: 0 8px 16px var(--shadow-light);
 }
 
 header h1 {
     margin: 1rem 0;
     font-size: 2.5rem;
+    text-shadow: 1px 1px 2px var(--shadow-medium);
 }
 
-/* Estilo da Seção Principal */
-main {
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-}
-
-.welcome {
-    text-align: center;
-    background-color: white;
-    padding: 3rem;
-    margin-bottom: 3rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px var(--shadow-light);
-}
-
-.welcome h2 {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-}
-
-.partners-section {
-    background-color: white;
-    border-radius: 15px;
-    padding: 3rem;
-    margin-bottom: 3rem;
-    box-shadow: 0 5px 15px var(--shadow-light);
-}
-
-.partners-section h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-}
-
-.partner-cards {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.partner-card {
-    background-color: var(--light-gray);
-    border-radius: 10px;
-    padding: 2rem;
-    width: 200px;
-    margin: 1rem;
-    box-shadow: 0 4px 8px var(--shadow-medium);
-    text-align: center;
-}
-
-.partner-card img {
-    width: 100px;
-    height: 100px;
+.logo-container {
     margin-bottom: 1rem;
 }
 
-.partner-card h4 {
-    font-size: 1.2rem;
+.logo {
+    height: 80px;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 5px;
+    box-shadow: 0 4px 8px var(--shadow-light);
 }
 
-.partner-card p {
-    font-size: 1rem;
-    color: var(--dark-gray);
+.partners {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-/* Estilo do Quiz */
+.partner-logo {
+    height: 90px;
+    background-color: #fff;
+    padding: 1px;
+    border-radius: 8px;
+}
+
+/* Main */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.welcome,
+.partners-section,
 .quiz-section {
-    background-color: white;
-    border-radius: 15px;
-    padding: 3rem;
-    box-shadow: 0 5px 15px var(--shadow-light);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 20px var(--shadow-light);
+    transition: box-shadow 0.3s ease;
 }
 
-.quiz-section h3 {
-    font-size: 2rem;
+.welcome:hover,
+.partners-section:hover,
+.quiz-section:hover {
+    box-shadow: 0 12px 30px var(--shadow-medium);
+}
+
+.welcome h2,
+.partners-section h2,
+.quiz-section h2 {
+    color: var(--gerar-blue);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.welcome p {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Parceiros */
+.partners-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.partner-card {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+.partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px var(--shadow-medium);
+}
+
+.partner-card:first-child {
+    border-top: 3px solid var(--coca-red);
+}
+
+.partner-card:last-child {
+    border-top: 3px solid var(--jasmine-green);
+}
+
+.partner-img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.partner-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.partner-card:first-child h3 {
+    color: var(--coca-red);
+}
+
+.partner-card:last-child h3 {
+    color: var(--jasmine-green);
+}
+
+/* Quiz */
+.quiz-section {
+    text-align: center;
+}
+
+.quiz-section p {
     margin-bottom: 1.5rem;
 }
 
 #quiz-container {
-    background-color: white;
-    border-radius: 10px;
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    box-shadow: 0 5px 15px var(--shadow-light);
+    background: linear-gradient(135deg, #ffffff, #e0f7fa);
+    border: 2px solid var(--gerar-blue);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    transition: transform 0.3s ease;
 }
 
-#quiz-container .question {
-    font-size: 1.5rem;
+#quiz-container:hover {
+    transform: scale(1.01);
+}
+
+#question-container {
     margin-bottom: 1.5rem;
 }
 
-#quiz-container .answers {
+#question-text {
+    background-color: var(--gerar-blue);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 4px #00000033;
+}
+
+#options-container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
-#quiz-container .answers button {
+.option-btn {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    font-weight: bold;
+    color: #333;
+}
+
+.option-btn:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
+}
+
+.option-btn.correct {
+    background-color: #e6f9ec;
+    border-color: var(--jasmine-green);
+    color: var(--jasmine-green);
+}
+
+.option-btn.wrong {
+    background-color: #fde0e0;
+    border-color: var(--coca-red);
+    color: var(--coca-red);
+}
+
+/* Botões */
+.btn {
     background-color: var(--gerar-blue);
-    color: white;
+    color: #fff;
     border: none;
-    padding: 1rem;
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
     font-size: 1rem;
     cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-#quiz-container .answers button:hover {
+.btn:hover {
     background-color: #0055aa;
+    transform: scale(1.02);
 }
 
-/* Estilo do Footer */
+#result-container {
+    background: linear-gradient(to bottom, #ffffff, #f0f8ff);
+    border: 2px solid var(--gerar-blue);
+    text-align: center;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+}
+
+#result-container h3 {
+    color: var(--gerar-blue);
+    margin-bottom: 1rem;
+}
+
+#score-text {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+#prize-text {
+    font-weight: bold;
+    color: var(--gerar-blue);
+    margin-bottom: 1.5rem;
+}
+
+/* Pós Créditos */
+#post-credits {
+    background: #fff9f0;
+    border-left: 5px solid var(--gerar-blue);
+    padding: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+#post-credits h2 {
+    color: var(--coca-red);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação */
+.floating-text {
+    animation: float 3s ease-in-out infinite;
+    color: var(--gerar-blue);
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+    padding: 1rem;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Ocultar elementos */
+.hide {
+    display: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .partners {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .partner-card {
+        min-width: 100%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Footer */
 footer {
     background-color: var(--dark-gray);
-    color: white;
+    color: #fff;
     text-align: center;
-    padding: 2rem;
-    margin-top: 4rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 -4px 8px var(--shadow-light);
 }
 
-footer p {
-    font-size: 1rem;
+/* Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
