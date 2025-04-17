@@ -79,13 +79,6 @@ main {
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: 0 8px 20px var(--shadow-light);
-    transition: box-shadow 0.3s ease;
-}
-
-.welcome:hover,
-.partners-section:hover,
-.quiz-section:hover {
-    box-shadow: 0 12px 30px var(--shadow-medium);
 }
 
 .welcome h2,
@@ -94,11 +87,6 @@ main {
     color: var(--gerar-blue);
     margin-bottom: 1rem;
     text-align: center;
-}
-
-.welcome p {
-    text-align: center;
-    margin-bottom: 1rem;
 }
 
 /* Partners Section */
@@ -158,10 +146,6 @@ main {
     text-align: center;
 }
 
-.quiz-section p {
-    margin-bottom: 1.5rem;
-}
-
 #quiz-container {
     background-color: var(--light-gray);
     border-radius: 8px;
@@ -219,93 +203,10 @@ main {
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.btn:hover {
-    background-color: #0055aa;
-    transform: scale(1.02);
 }
 
 #result-container {
     background-color: var(--light-gray);
     border-radius: 8px;
-    padding: 1.5rem;
-    margin: 2rem auto;
-    max-width: 600px;
-    box-shadow: 0 4px 8px var(--shadow-light);
-}
-
-#score-text {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-#prize-text {
-    font-weight: bold;
-    color: var(--gerar-blue);
-    margin-bottom: 1.5rem;
-}
-
-.hide {
-    display: none;
-}
-
-/* Footer */
-footer {
-    background-color: var(--dark-gray);
-    color: #fff;
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    box-shadow: 0 -4px 8px var(--shadow-light);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .partners {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .partner-card {
-        min-width: 100%;
-    }
-    
-    header h1 {
-        font-size: 2rem;
-    }
-}
-
-/* CSS para animação de revelação */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.floating-text {
-  animation: float 3s ease-in-out infinite;
-  color: var(--gerar-blue);
-  font-size: 1.4rem;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
-  padding: 1rem;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+    padding: 1
 }
