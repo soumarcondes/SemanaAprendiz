@@ -216,15 +216,16 @@ main {
     display: none;
 }
 
+/* Scroll Reveal Animation */
 .reveal {
     opacity: 0;
-    animation: reveal 1s forwards;
+    transform: translateY(30px);
+    transition: all 1s ease;
 }
 
-@keyframes reveal {
-    to {
-        opacity: 1;
-    }
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Footer */
@@ -234,4 +235,241 @@ footer {
     text-align: center;
     padding: 1rem;
     margin-top: 2rem;
+}
+
+/* Thank You Section - Versão Corrigida */
+.thank-you-section {
+    background: linear-gradient(135deg, #0066cc, #3a9d23);
+    color: white;
+    padding: 3rem 2rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    max-width: 1200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.thank-you-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.thank-you-content {
+    flex: 1;
+    min-width: 100px;
+}
+
+.thank-you-image {
+    flex: 0 1 40%; /* Alterado para ocupar no máximo 40% da largura */
+    max-width: 400px; /* Largura máxima definida */
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
+.thank-you-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.thank-you-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Garante que a imagem não ultrapasse o container */
+/* Aumenta a largura da imagem */
+.thank-you-image img {
+    max-width: 300%;
+    max-height: 200%; /* Mantém a altura limitada */
+}
+
+
+/* Estilo para os textos de resultado */
+#result-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.thank-you-message p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Efeito de carregamento */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.thank-you-image img {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.signature {
+    font-style: italic;
+    text-align: right;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+/* Adicione estas regras ao seu CSS existente */
+
+/* Efeitos flutuantes */
+#quiz-container.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.option-btn.float {
+    animation: floatOption 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes floatOption {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo das perguntas */
+.question-mark {
+    color: var(--coca-red);
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.option-number {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: var(--gerar-blue);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 10px;
+}
+
+/* Efeitos de confete */
+.confetti {
+    position: absolute;
+    right: 10px;
+    animation: confettiFall 1s ease-out forwards;
+    font-size: 1.5em;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(-30px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Curiosidades */
+.fun-fact {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(0, 102, 204, 0.1);
+    border-left: 4px solid var(--gerar-blue);
+    font-style: italic;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botões com efeito */
+.btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Efeito de onda ao clicar */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Garante que as imagens de resultado se ajustem corretamente */
+.thank-you-image img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Efeito de transição suave para troca de imagens */
+.thank-you-image img {
+    transition: opacity 0.5s ease;
+}
+
+/* Estilo para os textos de resultado */
+#result-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.thank-you-message p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
 }
